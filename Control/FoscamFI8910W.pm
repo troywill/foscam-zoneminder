@@ -144,6 +144,14 @@ sub moveConUp
     $self->sendCmd( $cmd );
 }
 
+sub moveStop
+{
+	my $self = shift;
+	Debug( "Move Stop" );
+	my $cmd = "decoder_control.cgi?command=1";
+	$self->sendCmd( $cmd );
+}
+
 sub moveConDown
 {
     my $self = shift;
