@@ -109,7 +109,11 @@ sub sendCmd
 
     printMsg( $cmd, "Tx" );
 
-    my $req = HTTP::Request->new( GET=>"http://".$self->{Monitor}->{ControlAddress}."/$cmd" );
+    my $camera_address = $self->{Monitor}->{ControlAddress};
+    my $credentials = $self->{Monitor}->{ControlDevice};
+    my $req =
+      HTTP::Request->new( GET => "http://${camera_address}/${cmd}${credentials}" );
+
     my $res = $self->{ua}->request($req);
 
     if ( $res->is_success )
