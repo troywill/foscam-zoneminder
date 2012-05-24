@@ -112,7 +112,7 @@ sub sendCmd
     my $camera_address = $self->{Monitor}->{ControlAddress};
     my $credentials = $self->{Monitor}->{ControlDevice};
     my $req =
-      HTTP::Request->new( GET => "http://$camera_address/$cmd".'&'.$credentials" );
+      HTTP::Request->new( GET => "http://$camera_address/$cmd".'&'."$credentials" );
 
     my $res = $self->{ua}->request($req);
 
@@ -140,7 +140,7 @@ sub moveConUp
 {
     my $self = shift;
     Debug( "Move Up" );
-    my $cmd = "nphControlCamera?Direction=TiltUp";
+    my $cmd = "decoder_control.cgi?command=0";
     $self->sendCmd( $cmd );
 }
 
@@ -148,7 +148,7 @@ sub moveConDown
 {
     my $self = shift;
     Debug( "Move Down" );
-    my $cmd = "nphControlCamera?Direction=TiltDown";
+    my $cmd = "decoder_control.cgi?command=2";
     $self->sendCmd( $cmd );
 }
 
@@ -164,7 +164,7 @@ sub moveConRight
 {
     my $self = shift;
     Debug( "Move Right" );
-    my $cmd = "nphControlCamera?Direction=PanRight";
+    my $cmd = "decoder_control.cgi?command=4";
     $self->sendCmd( $cmd );
 }
 
