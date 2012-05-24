@@ -176,15 +176,36 @@ sub moveConRight
     $self->sendCmd( $cmd );
 }
 
-sub moveMap
+sub moveConUpRight
 {
-    my $self = shift;
-    my $params = shift;
-    my $xcoord = $self->getParam( $params, 'xcoord' );
-    my $ycoord = $self->getParam( $params, 'ycoord' );
-    Debug( "Move Map to $xcoord,$ycoord" );
-    my $cmd = "nphControlCamera?Direction=Direct&NewPosition.x=$xcoord&NewPosition.y=$ycoord&Width=".$self->{Monitor}->{Width}."&Height=".$self->{Monitor}->{Height};
-    $self->sendCmd( $cmd );
+	my $self = shift;
+	Debug( "Move Diagonally Up Right" );
+	my $cmd = "decoder_control.cgi?command=90";
+	$self->sendCmd( $cmd );
+}
+
+sub moveConDownRight
+{
+	my $self = shift;
+	Debug( "Move Diagonally Down Right" );
+	my $cmd = "decoder_control.cgi?command=92";
+	$self->sendCmd( $cmd );
+}
+
+sub moveConUpLeft
+{
+	my $self = shift;
+	Debug( "Move Diagonally Up Left" );
+	my $cmd = "decoder_control.cgi?command=91";
+	$self->sendCmd( $cmd );
+}
+
+sub moveConDownLeft
+{
+	my $self = shift;
+	Debug( "Move Diagonally Down Left" );
+	my $cmd = "decoder_control.cgi?command=93";
+	$self->sendCmd( $cmd );
 }
 
 sub presetClear
@@ -202,8 +223,9 @@ sub presetSet
     my $self = shift;
     my $params = shift;
     my $preset = $self->getParam( $params, 'preset' );
-    Debug( "Set Preset $preset" );
-    my $cmd = "nphPresetNameCheck?PresetName=$preset&Data=$preset";
+    my $presetCmd = 30 + ($preset*2);
+    Debug( "Set Preset $preset: $presetCmd" );
+    my $cmd = "decoder_control.cgi?command=$presetCmd";
     $self->sendCmd( $cmd );
 }
 
@@ -212,8 +234,9 @@ sub presetGoto
     my $self = shift;
     my $params = shift;
     my $preset = $self->getParam( $params, 'preset' );
-    Debug( "Goto Preset $preset" );
-    my $cmd = "nphControlCamera?Direction=Preset&PresetOperation=Move&Data=$preset";
+    my $presetCmd = 31 + ($preset*2);
+    Debug( "Goto Preset $preset: $presetCmd" );
+    my $cmd = "decoder_control.cgi?command=$presetCmd";
     $self->sendCmd( $cmd );
 }
 
@@ -221,58 +244,8 @@ sub presetHome
 {
     my $self = shift;
     Debug( "Home Preset" );
-    my $cmd = "nphControlCamera?Direction=HomePosition";
+    my $cmd = "decoder_control.cgi?command=25";
     $self->sendCmd( $cmd );
 }
 
 1;
-__END__
-
-=head1 NAME
-
-ZoneMinder::Database - Perl extension for blah blah blah
-
-=head1 SYNOPSIS
-
-  use ZoneMinder::Database;
-  blah blah blah
-
-=head1 DESCRIPTION
-
-Stub documentation for ZoneMinder, created by h2xs. It looks like the
-author of the extension was negligent enough to leave the stub
-unedited.
-
-Blah blah blah.
-
-=head2 EXPORT
-
-None by default.
-
-
-
-=head1 SEE ALSO
-
-Mention other useful documentation such as the documentation of
-related modules or operating system documentation (such as man pages
-in UNIX), or any relevant external documentation such as RFCs or
-standards.
-
-If you have a mailing list set up for your module, mention it here.
-
-If you have a web site set up for your module, mention it here.
-
-=head1 AUTHOR
-
-Troy Will, E<lt>troydwill@gmail.comE<gt>
-
-=head1 COPYRIGHT AND LICENSE
-
-Copyright (C) 2012  Troy Will
-
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself, either Perl version 5.8.3 or,
-at your option, any later version of Perl 5 you may have available.
-
-
-=cut
