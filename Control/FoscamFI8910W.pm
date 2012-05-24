@@ -1,7 +1,8 @@
 # ==========================================================================
 #
-# ZoneMinder Panasonic IP Control Protocol Module, $Date: 2011-06-21 10:19:10 +0100 (Tue, 21 Jun 2011) $, $Revision: 3459 $
-# Copyright (C) 2001-2008  Philip Coombes
+# ZoneMinder Foscam FI8910W IP Control Protocol Module
+# Copyright (C) 2012  Troy Will
+# from the Zoneminder PanasonicIP.pm by Philip Coombes, Copyright (C) 2001-2008  
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -19,10 +20,10 @@
 #
 # ==========================================================================
 #
-# This module contains the implementation of the Panasonic IP camera control
+# This module contains an implementation of a Foscam IP FI8910W camera control
 # protocol
 #
-package ZoneMinder::Control::PanasonicIP;
+package ZoneMinder::Control::FoscamFI8910W;
 
 use 5.006;
 use strict;
@@ -37,7 +38,7 @@ our $VERSION = $ZoneMinder::Base::VERSION;
 
 # ==========================================================================
 #
-# Panasonic IP Control Protocol
+# Foscam FI8910W IP Control Protocol
 #
 # ==========================================================================
 
@@ -270,7 +271,6 @@ sub presetHome
 
 1;
 __END__
-# Below is stub documentation for your module. You'd better edit it!
 
 =head1 NAME
 
@@ -308,11 +308,11 @@ If you have a web site set up for your module, mention it here.
 
 =head1 AUTHOR
 
-Philip Coombes, E<lt>philip.coombes@zoneminder.comE<gt>
+Troy Will, E<lt>troydwill@gmail.comE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (C) 2001-2008  Philip Coombes
+Copyright (C) 2012  Troy Will
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself, either Perl version 5.8.3 or,
