@@ -175,62 +175,6 @@ sub moveMap
     $self->sendCmd( $cmd );
 }
 
-sub zoomConTele
-{
-    my $self = shift;
-    my $params = shift;
-    my $step = $self->getParam( $params, 'step' );
-    Debug( "Zoom Tele" );
-    my $cmd = "nphControlCamera?Direction=ZoomTele";
-    $self->sendCmd( $cmd );
-}
-
-sub zoomConWide
-{
-    my $self = shift;
-    my $params = shift;
-    my $step = $self->getParam( $params, 'step' );
-    Debug( "Zoom Wide" );
-    my $cmd = "nphControlCamera?Direction=ZoomWide";
-    $self->sendCmd( $cmd );
-}
-
-sub focusConNear
-{
-    my $self = shift;
-    my $params = shift;
-    my $step = $self->getParam( $params, 'step' );
-    Debug( "Focus Near" );
-    my $cmd = "nphControlCamera?Direction=FocusNear";
-    $self->sendCmd( $cmd );
-}
-
-sub focusConFar
-{
-    my $self = shift;
-    my $params = shift;
-    my $step = $self->getParam( $params, 'step' );
-    Debug( "Focus Far" );
-    my $cmd = "nphControlCamera?Direction=FocusFar";
-    $self->sendCmd( $cmd );
-}
-
-sub focusAuto
-{
-    my $self = shift;
-    Debug( "Focus Auto" );
-    my $cmd = "nphControlCamera?Direction=FocusAuto";
-    $self->sendCmd( $cmd );
-}
-
-sub focusMan
-{
-    my $self = shift;
-    Debug( "Focus Manual" );
-    my $cmd = "/axis-cgi/com/ptz.cgi?autofocus=off";
-    $self->sendCmd( $cmd );
-}
-
 sub presetClear
 {
     my $self = shift;
