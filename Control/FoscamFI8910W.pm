@@ -112,7 +112,7 @@ sub sendCmd
     my $camera_address = $self->{Monitor}->{ControlAddress};
     my $credentials = $self->{Monitor}->{ControlDevice};
     my $req =
-      HTTP::Request->new( GET => "http://${camera_address}/${cmd}${credentials}" );
+      HTTP::Request->new( GET => "http://$camera_address/$cmd".'&'.$credentials" );
 
     my $res = $self->{ua}->request($req);
 
@@ -156,7 +156,7 @@ sub moveConLeft
 {
     my $self = shift;
     Debug( "Move Left" );
-    my $cmd = "nphControlCamera?Direction=PanLeft";
+    my $cmd = "decoder_control.cgi?command=6";
     $self->sendCmd( $cmd );
 }
 
