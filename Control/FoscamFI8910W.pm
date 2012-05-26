@@ -226,4 +226,20 @@ sub presetHome {
     $self->sendCmd($cmd);
 }
 
+#Turn IR on
+sub wake {
+    my $self = shift;
+    Debug("Wake - IR on");
+    my $cmd = "decoder_control.cgi?command=95&";
+    $self->sendCmd($cmd);
+}
+
+#Turn IR off
+sub sleep {
+    my $self = shift;
+    Debug("Sleep - IR off");
+    my $cmd = "decoder_control.cgi?command=94&";
+    $self->sendCmd($cmd);
+}
+
 1;
